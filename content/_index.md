@@ -24,7 +24,7 @@ recent_more_text = "more »"
 date_format = "%F"
 +++
 
-Hi, I'm a bachelor's student in computer science and an open source developer. My main project is the [Generic DAW](https://github.com/generic-daw/generic-daw) digital audio workstation, and on the side I maintain [iced-split](https://github.com/edwloef/iced_split) and [bkmap](https://github.com/edwloef/bkmap).
+Hi, I'm a bachelor's student in computer science and an open source developer. My main project is the [Generic DAW](https://github.com/generic-daw/generic-daw) digital audio workstation, and on the side I maintain [iced-split](https://github.com/edwloef/iced_split) and [Foghorn](https://github.com/foghorn-rs/foghorn).
 
 I also contribute to various open source projects, mainly [Iced](https://github.com/iced-rs/iced) and the [Muv App](https://gitlab.com/LeLuxNet/Muv-App).
 
