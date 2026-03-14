@@ -399,15 +399,23 @@ The test project contains 84 processing nodes arranged in an extreme fan-in grap
 The test was run on an Intel Core i7-13700H processor, with 6 hyper-threading performance cores at 5 GHz and 8 efficiency cores at 3.7 GHz. The running CPU frequency scaling driver was `intel_pstate`, set to the `performance` power profile, and the running OS was Arch Linux 6.19.6. Audio processing was set to a sample rate of 44.1 kHz and a buffer size of 512 samples, with 18 worker threads in the thread pool.
 
 <div style="display:flex">
-	<img src="/img/real-time-safe-multi-threaded-daw-audio/histogram_1.svg" style="width:100%" />
-	<img src="/img/real-time-safe-multi-threaded-daw-audio/box_plot_1.svg" style="width:100%" />
+	<div style="flex:1">
+		<img src="/img/real-time-safe-multi-threaded-daw-audio/histogram_1.svg" style="width:100%" />
+	</div>
+	<div style="flex:1">
+		<img src="/img/real-time-safe-multi-threaded-daw-audio/box_plot_1.svg" style="width:100%" />
+	</div>
 </div>
 
 First, comparing the single-threaded implementation and both multi-threaded implementations, we can observe a large decrease in load across the board. In fact, both multi-threaded implementations' P100 load is lower than the single-threaded implementation's P75 load, and both multi-threaded implementations' P75 load is lower than the single-threaded implementation's P25 load. Additionally, the single-threaded implementation missed the deadline in 25 measurements, while neither multi-threaded implementation missed the deadline at all.
 
 <div style="display:flex">
-	<img src="/img/real-time-safe-multi-threaded-daw-audio/histogram_2.svg" style="width:100%" />
-	<img src="/img/real-time-safe-multi-threaded-daw-audio/box_plot_2.svg" style="width:100%" />
+	<div style="flex:1">
+		<img src="/img/real-time-safe-multi-threaded-daw-audio/histogram_2.svg" style="width:100%" />
+	</div>
+	<div style="flex:1">
+		<img src="/img/real-time-safe-multi-threaded-daw-audio/box_plot_2.svg" style="width:100%" />
+	</div>
 </div>
 
 Second, comparing the rayon-`spawn`-job-based implementation and my own thread pool, we see load slightly decrease across the board. However, my thread pool showed slightly higher measurement-to-measurement deviation with $\sigma\approx0.0308$, compared to $\sigma\approx0.0283$ for the rayon-`spawn`-job-based implementation. This may be caused by the dynamic nature of the test, since my thread pool has an additional mode around $0.092$ that's not present in the rayon-`spawn`-job-based implementation. Due to the low load at that mode, this indicates less work than average being done, hinting at the overhead of spawning many short jobs dominating the rayon-`spawn`-job-based implementation in that case.
