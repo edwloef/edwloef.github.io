@@ -36,7 +36,7 @@ Code that abides by these requirements is considered "real-time safe" (not to be
 
 One of the main components of a DAW engine is an audio graph, which abstractly represents the work to be done between receiving input audio and emitting output audio as a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) of processing nodes (e.g., playlist tracks, mixer channels) and the dependencies between them. A node may only be processed after all of its dependencies have been processed, and every node must be visited in every audio callback.
 
-{% mermaid() %}
+{% <mermaid> %}
 stateDiagram-v2
 [*] --> A
   A --> D
@@ -49,7 +49,7 @@ stateDiagram-v2
   D --> F
   E --> F
   F --> [*]
-{% end %}
+{% </mermaid> %}
 
 ---
 
@@ -100,7 +100,7 @@ fn run_schedule(nodes: &mut [Node], schedule: &[usize]) {
 
 Quite trivially, we can see that the runtime of the audio processing is bounded by the amount of time every node in the graph spends processing. That's quite predictable, but large projects can easily exceed the work that fits in the callback time budget. For example, this is one potential execution order of the above audio graph example:
 
-{% mermaid() %}
+{% <mermaid> %}
 gantt
   dateFormat SSS
   axisFormat %L
@@ -111,7 +111,7 @@ gantt
   D:        d,         after c, 15ms
   E:        e,         after d, 4ms
   F:                   after e, 4ms
-{% end %}
+{% </mermaid> %}
 
 ---
 
@@ -119,7 +119,7 @@ gantt
 
 What if multiple nodes could process at the same time? That would reduce the worst-case execution time bound from the amount of time every node in the graph spends processing to the amount of time every node on the [critical path](https://en.wikipedia.org/wiki/Critical_path_method) spends processing (assuming sufficient threads and perfect load balance).
 
-{% mermaid() %}
+{% <mermaid> %}
 gantt
   dateFormat SSS
   axisFormat %L
@@ -130,7 +130,7 @@ gantt
   D:        d,         after b, 15ms
   E:        e,         after c, 4ms
   F:                   after d, 4ms
-{% end %}
+{% </mermaid> %}
 
 In reality, we don't have infinite threads at our disposal and don't know beforehand how long each node needs to process, so we'll have to build a good enough schedule during the graph processing step itself.
 

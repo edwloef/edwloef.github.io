@@ -1,4 +1,4 @@
-# serene v5.6.3
+# serene v6.0.0
 #
 # - docs: https://github.com/isunjn/serene/blob/latest/USAGE.md
 # - check for updates: https://github.com/isunjn/serene/releases
@@ -7,7 +7,7 @@
 
 base_url = "https://edwloef.github.io"
 title = "Edwin Löffler's Blog"
-# description = "xxxx xxxx xxxx"
+description = "Edwin Löffler's Blog"
 default_language = "en"
 theme = "serene"
 output_dir = "public"
@@ -24,7 +24,7 @@ external_links_target_blank = false
 external_links_no_follow = true
 external_links_no_referrer = true
 smart_punctuation = false
-github_alerts = false
+github_alerts = true
 
 [markdown.highlighting]
 style = "class"
@@ -40,21 +40,47 @@ anchors = "on"
 
 [extra]
 
-sections = [
-  { name = "posts", path = "/posts", is_external = false },
-  # { name = "tags", path = "/tags", is_external = false },
-  # { name = "github", path = "https://github.com/<your-username>", is_external = true },
+nav = [
+  { name = "posts", path = "/posts" },
+  # { name = "tags", path = "/tags" },
+  # { name = "github", path = "https://github.com/<your-username>" },
 ]
-blog_section_path = "/posts"
+
+# If you don't want to display handle/bio/avatar, simply comment out that line
+name = "Edwin Löffler"
+handle = "edwloef"
+# bio = "dog person, killer"
+avatar = "img/apple-touch-icon.png"
+links = [
+  { name = "GitHub", icon = "github", url = "https://github.com/edwloef" },
+  { name = "Email", icon = "email", url = "mailto:edwin.loeffler@uni-jena.de" },
+  # { name = "Twitter", icon = "twitter", url = "https://twitter.com/<your-username>" },
+  # { name = "Mastodon", icon = "mastodon", url = "https://mastodon.social/<your-username>", rel_me = true },
+]
+blog_section_path = "/posts" # Path of the main blog section, used by home page's recent posts and tags pages
 
 back_link_text = "Back" # Text of the back button
-force_theme = "light" # false | "light" | "dark"
+color_scheme = "light" # "auto" | "light" | "dark"
+
+# og_image = "img/og.png" # The default image for social media sharing (Open Graph), a path in static folder or a full URL
 
 footer_copyright = "© 2026 Edwin Löffler"
 footer_credits = false # Whether to show "Built with zola and serene" in footer
 
 not_found_error_text = "404 Not Found"
 not_found_recover_text = "« back to home »"
+
+# Site-wide default values of display options, can be overridden in a section's `_index.md`, and again in a post's front-matter
+date_format = "%b %-d, %Y"
+toc = true # show table-of-contents
+code_copy = true # show copy button in code block
+comment = false # enable comment
+math = false # enable formula rendering with KaTeX
+mermaid = false # enable chart rendering with Mermaid
+outdated_alert = false # show outdate alert after certain days
+outdated_alert_days = 120
+outdated_alert_text_before = "This article was last updated "
+outdated_alert_text_after = " days ago and may be out of date."
 
 reaction = false # Whether to enable anonymous emoji reactions (Note: You need to set up a working api endpoint to enable this feature)
 reaction_align = "right" # "left" | "center" | "right"

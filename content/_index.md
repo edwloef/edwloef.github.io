@@ -7,20 +7,11 @@ lang = 'en'
 # Show footer in home page
 footer = false
 
-# If you don't want to display id/bio/avatar, simply comment out that line
-name = "Edwin Löffler"
-id = "edwloef"
-# bio = "dog person, killer"
-avatar = "img/apple-touch-icon.png"
-links = [
-    { name = "GitHub", icon = "github", url = "https://github.com/edwloef" },
-    { name = "Email", icon = "email", url = "mailto:edwin.loeffler@uni-jena.de" },
-]
-
 # Show a few recent posts in home page
 recent = false
 recent_max = 15
 recent_more_text = "more »"
+
 date_format = "%F"
 +++
 
